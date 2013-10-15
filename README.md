@@ -7,12 +7,12 @@ A bridge between laravel 4 and the Buckaroo Payment engine/
 Installation
 ============
 
-Add `johnhout/Buckaroo` as a requirement to composer.json:
+Add `johninthout/buckaroo` as a requirement to composer.json:
 
 ```javascript
 {
     "require": {
-        "rcrowe/twigbridge": "0.5.*"
+        "johninthout\buckaroo": "0.5.*"
     }
 }
 ```
