@@ -1,0 +1,24 @@
+{
+    "name": "johninthout/buckaroo",
+    "description": "",
+    "authors": [
+        {
+            "name": "buckarooBridge",
+            "email": "j.inthout@woodmarks.nl"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.0.x",
+	    "linkorb/buckaroo": "1.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "Johninthout\\Buckaroo": "src/"
+        }
+    },
+    "minimum-stability": "dev"
+}
