@@ -2,7 +2,6 @@
 
 	namespace johnhout\Buckaroo;
 
-	use johnhout\Buckaroo;
 	use johnhout\Buckaroo\SOAP;
 
 	class Request
@@ -19,7 +18,8 @@
 
 		public function loadPem()
 		{
-			$this->soapClient->loadPem(\Config::get('buckaroo::pem_file'));
+			$path = base_path().'/public/';
+			$this->soapClient->loadPem($path.\Config::get('buckaroo::pem_file'));
 		}
 
 		public function sendRequest($TransactionRequest, $type)
@@ -31,8 +31,8 @@
 			}
 
 			// Envelope and wrapper stuff
-			$Header                                  = new Buckaroo\SOAP\Header();
-			$Header->MessageControlBlock             = new Buckaroo\SOAP\MessageControlBlock();
+			$Header                                  = new SOAP\Header();
+			$Header->MessageControlBlock             = new SOAP\MessageControlBlock();
 			$Header->MessageControlBlock->Id         = '_control';
 			$Header->MessageControlBlock->WebsiteKey = \Config::get('buckaroo::website_key');
 			$Header->MessageControlBlock->Culture    = \Config::get('buckaroo::culture');
