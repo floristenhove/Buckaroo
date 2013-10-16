@@ -12,7 +12,7 @@ Add `johnhout/buckaroo` as a requirement to composer.json:
 ```javascript
 {
     "require": {
-        "johnhout\buckaroo": "0.5.*"
+       "johnhout/buckaroo" : "dev-master"
     }
 }
 ```
