@@ -31,7 +31,7 @@ Configuration
 You should  publish a configuration file to enter your settings of your buckaroo account by running the following Artisan command.
 
 ```
-$ php artisan config:publish johnhout\buckaroo
+$ php artisan config:publish johnhout/buckaroo
 ```
 
 Add the serviceprovider
