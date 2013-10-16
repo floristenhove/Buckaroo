@@ -1,6 +1,6 @@
 <?php
 
-namespace LinkORB\Buckaroo;
+namespace johnhout\Buckaroo;
 
 class SoapClientWSSEC extends \SoapClient
 {

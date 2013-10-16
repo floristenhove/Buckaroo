@@ -1,6 +1,6 @@
 <?php
 
-namespace LinkORB\Buckaroo\SOAP;
+namespace johnhout\Buckaroo\SOAP;
 
 class Service
 {

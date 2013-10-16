@@ -1,9 +1,9 @@
 <?php
 
-	namespace LinkORB\Buckaroo;
+	namespace johnhout\Buckaroo;
 
-	use LinkORB\Buckaroo;
-	use LinkORB\Buckaroo\SOAP;
+	use johnhout\Buckaroo;
+	use johnhout\Buckaroo\SOAP;
 
 	class Request
 	{
@@ -13,7 +13,6 @@
 
 		function __construct()
 		{
-
 			$this->soapClient = new SoapClientWSSEC(\Config::get('buckaroo::wsdl_url'), array('trace' => 1));
 			$this->loadPem();
 		}

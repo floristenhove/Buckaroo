@@ -8,7 +8,7 @@
  * Buckaroo BPE3 API client for Laravel 4
  * Made by: John in 't Hout - U-Lab.nl
  * Tips or suggestions can be mailed to john.hout@u-lab.nl or check github.
- * Thanks to Joost Faasen from LinkORB for helping the SOAP examples / client.
+ * Thanks to Joost Faasen from johnhout for helping the SOAP examples / client.
  */
 
 class Buckaroo
@@ -29,7 +29,7 @@ class Buckaroo
 	 * @throws \Exception
 	 */
 	public function addInvoice($currency = NULL, $amount = NULL, $invoice = NULL, $description = NULL, $return_url = NULL, $start_recurrent = NULL) {
-		$this->request = new \LinkORB\Buckaroo\Request();
+		$this->request = new \johnhout\Buckaroo\Request();
 
 		if( $currency === NULL ) {
 			$currency = \Config::get('buckaroo::currency');
@@ -51,7 +51,7 @@ class Buckaroo
 		}
 
 		// Create the request
-		$TransactionRequest                 = new \LinkORB\Buckaroo\SOAP\Body();
+		$TransactionRequest                 = new \johnhout\Buckaroo\SOAP\Body();
 		$TransactionRequest->Currency       = $currency;
 		$TransactionRequest->AmountDebit    = $amount;
 		$TransactionRequest->Invoice        = $invoice;
@@ -60,15 +60,15 @@ class Buckaroo
 		$TransactionRequest->StartRecurrent = $start_recurrent;
 
 		// Specify which service / action we are calling
-		$TransactionRequest->Services = new \LinkORB\Buckaroo\SOAP\Services();
+		$TransactionRequest->Services = new \johnhout\Buckaroo\SOAP\Services();
 
-		$TransactionRequest->Services->Service = new \LinkORB\Buckaroo\SOAP\Service('ideal', 'Pay', 1);
+		$TransactionRequest->Services->Service = new \johnhout\Buckaroo\SOAP\Service('ideal', 'Pay', 1);
 
 		// Add parameters for this service
-		$TransactionRequest->Services->Service->RequestParameter = new \LinkORB\Buckaroo\SOAP\RequestParameter('issuer', $invoice);
+		$TransactionRequest->Services->Service->RequestParameter = new \johnhout\Buckaroo\SOAP\RequestParameter('issuer', $invoice);
 
 		// Optionally pass the client ip-address for logging
-		$TransactionRequest->ClientIP = new \LinkORB\Buckaroo\SOAP\IPAddress(\Request::getClientIp());
+		$TransactionRequest->ClientIP = new \johnhout\Buckaroo\SOAP\IPAddress(\Request::getClientIp());
 
 		// Send the request to Buckaroo, and retrieve the response
 		$response = $this->request->sendRequest($TransactionRequest, 'transaction');
@@ -82,9 +82,10 @@ class Buckaroo
 	 * @return array|string
 	 */
 	public function getInvoiceInfo($invoiceId) {
-		$this->request = new \LinkORB\Buckaroo\Request();
 
-		$InvoiceInfoRequest          = new \LinkORB\Buckaroo\SOAP\Body();
+		$this->request = new \johnhout\Buckaroo\Request(\Config::get('buckaroo::website_key'));
+
+		$InvoiceInfoRequest          = new \johnhout\Buckaroo\SOAP\Body();
 		$InvoiceInfoRequest->Invoice = array();
 
 
@@ -168,9 +169,9 @@ class Buckaroo
 	 * @return bool
 	 */
 	public function checkInvoiceForSuccess($invoiceId) {
-		$this->request = new \LinkORB\Buckaroo\Request();
+		$this->request = new \johnhout\Buckaroo\Request();
 
-		$InvoiceInfoRequest          = new \LinkORB\Buckaroo\SOAP\Body();
+		$InvoiceInfoRequest          = new \johnhout\Buckaroo\SOAP\Body();
 		$InvoiceInfoRequest->Invoice = array();
 
 		$InvoiceInfoRequest->Invoice         = new \stdClass();
@@ -208,7 +209,6 @@ class Buckaroo
 	 * @throws \Exception
 	 */
 	public function createForm($dataArray, $button = NULL) {
-
 
 		if( !$dataArray['brq_amount'] ) {
 			throw new \Exception('Amount has not been set.');
