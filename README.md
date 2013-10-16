@@ -58,8 +58,8 @@ Adding a picked bank to the form for the iDeal portal.
 ```php
 Buckaroo::createForm(array(
 	'brq_amount'  				=> '10.00',
-	'brq_invoicenumber' 		=> 'Invoice0001'
-	'brq_payment_method' 		=> 'ideal'
+	'brq_invoicenumber' 		=> 'Invoice0001',
+	'brq_payment_method' 		=> 'ideal',
 	'brq_service_ideal_issuer' 	=> 'ABNANL2A'
 ));
 ```
@@ -68,8 +68,8 @@ Using PayPal.
 ```php
 Buckaroo::createForm(array(
 	'brq_amount'  		=> '10.00',
-	'brq_invoicenumber' => 'Invoice0001'
-	'brq_payment_method' => 'paypal'
+	'brq_invoicenumber' => 'Invoice0001',
+	'brq_payment_method' => 'paypal',
 	'brq_service_paypal_buyeremail' => 'user@example.com'
 ));
 ```
