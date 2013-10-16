@@ -1,10 +1,10 @@
 {
     "name": "johnhout/buckaroo",
-    "description": "",
+    "description": "A bridge between laravel 4 and the Buckaroo Payment engine.",
     "authors": [
         {
-            "name": "buckarooBridge",
-            "email": "j.inthout@woodmarks.nl"
+            "name": "Buckaroo Laravel 4 Bridge",
+            "email": "John in 't Hout"
         }
     ],
     "require": {
