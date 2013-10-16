@@ -1,5 +1,5 @@
 {
-    "name": "johninthout/buckaroo",
+    "name": "johnhout/buckaroo",
     "description": "",
     "authors": [
         {
@@ -17,7 +17,7 @@
             "src/migrations"
         ],
         "psr-0": {
-            "Johninthout\\Buckaroo": "src/"
+            "johnhout\\Buckaroo": "src/"
         }
     },
     "minimum-stability": "dev"

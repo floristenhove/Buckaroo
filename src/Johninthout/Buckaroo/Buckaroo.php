@@ -1,9 +1,9 @@
-<?php namespace Johninthout\Buckaroo;
+<?php namespace johnhout\Buckaroo;
 
 /**
  * Class Buckaroo
  *
- * @package Johninthout\Buckaroo
+ * @package johnhout\Buckaroo
  *
  * Buckaroo BPE3 API client for Laravel 4
  * Made by: John in 't Hout - U-Lab.nl

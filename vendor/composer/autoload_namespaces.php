@@ -7,6 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'LinkORB\\Buckaroo\\' => array($vendorDir . '/linkorb/buckaroo/src'),
-    'Johninthout\\Buckaroo' => array($baseDir . '/src'),
+    'johnhout\\Buckaroo' => array($baseDir . '/src'),
     'Illuminate\\Support' => array($vendorDir . '/illuminate/support'),
 );
