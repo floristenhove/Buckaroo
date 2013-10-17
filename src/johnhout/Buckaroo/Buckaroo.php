@@ -83,7 +83,7 @@ class Buckaroo
 	 */
 	public function getInvoiceInfo($invoiceId) {
 
-		$this->request = new Request(\Config::get('buckaroo::website_key'));
+		$this->request = new \johnhout\Buckaroo\Request(\Config::get('buckaroo::website_key'));
 
 		$InvoiceInfoRequest          = new \johnhout\Buckaroo\SOAP\Body();
 		$InvoiceInfoRequest->Invoice = array();
