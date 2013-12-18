@@ -73,8 +73,6 @@ Buckaroo::createForm(array(
 	'brq_service_paypal_buyeremail' => 'user@example.com'
 ));
 ```
-
-
 A complete list of possible banks to select from when using ideal
 ```html
 <select>
@@ -91,29 +89,45 @@ A complete list of possible banks to select from when using ideal
 </select>
 ```
 
-
-
-Retrieving order Information of a previously made payment with order number.
+Refunding
+=============
+Refunding is really simple just add an order number and a price (int rounded to 1).
 ```php
-Buckaroo::getInvoiceInfo('Invoice0001');
-```
-This will return the following array with if the test mode is active a the `test` key as `1`.
-```php
-Array
-(
-    [id] => 943E893D60F643F5B1BC295C925F4
-    [attempts] => 1
-    [type_description] => iDeal
-    [datetime] => 2013-10-16T10:18:27+02:00
-    [status] => 190
-    [status_msg] => Succes
-    [currency] => EUR
-    [test] => 1
-)
+	Buckaroo::refund('Invoice00100', 0.5); // Refund 50 cents to the user of order Invoice00100
 ```
 
-However if your simply want to resolve if a payment was payed than you could use the following it returns a bool.
+Transaction information
+=============
+Retrieving transaction Information of a previously made payment with  the order number.
 ```php
-Buckaroo::checkInvoiceForSuccess('Invoice0001');
+Buckaroo::transactionInfo('Invoice00100');
 ```
+This will return the the whole object of a the transaction including multiple attempts dump the object to view more information.
+```php
+	$transactionData = Buckaroo::transactionInfo('Invoice00100');
+	print_r($transactionData);
+```
+
+Helpers
+=============
+However if your simply want to resolve if a transaction was payed than you could use the following it returns a bool.
+```php
+Buckaroo::checkInvoiceForSuccess('Invoice00100');
+// Returns true / false
+```
+
+Checking for success
+```php
+$transactionData = Buckaroo::transactionInfo('Invoice00100');
+if(Buckaroo::success())
+{
+	var_dump($transactionData);
+}
+else
+{
+	var_dump(Buckaroo::errors());
+}
+```
+
+
 
