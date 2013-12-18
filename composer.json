@@ -19,5 +19,5 @@
             "johnhout\\Buckaroo": "src/"
         }
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "1.0"
 }
