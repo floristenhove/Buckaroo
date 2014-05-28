@@ -18,8 +18,7 @@ class Request
 
     public function loadPem()
     {
-        $path = base_path() . '/public/';
-        $this->soapClient->loadPem($path . \Config::get('buckaroo::pem_file'));
+        $this->soapClient->loadPem(public_path() . '/'. \Config::get('buckaroo::pem_file'));
     }
 
     public function sendRequest($TransactionRequest, $type)
