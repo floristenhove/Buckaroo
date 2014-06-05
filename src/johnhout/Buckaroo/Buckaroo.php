@@ -54,15 +54,15 @@ class Buckaroo
 			$errors = self::$_errors[$class];
         }
 		else {
-			$errors = false;
+			$errors = array();
 		}
 
 		return $errors;
 	}
 
-	static function setError($value) {
+	static function addError($value) {
 		$class = get_called_class();
-		self::$_errors[$class] = $value;
+		self::$_errors[$class][] = $value;
 	}
 
 	/**
@@ -271,10 +271,10 @@ class Buckaroo
 	/**
 	 * @param $message
 	 */
-	public function addError($message)
-	{
-		array_push(self::$errors, array('message' => $message));
-	}
+//	public function addError($message)
+//	{
+//		array_push(self::$errors, array('message' => $message));
+//	}
 
 	/**
 	 * @return bool
