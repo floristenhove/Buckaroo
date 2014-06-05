@@ -18,18 +18,52 @@ use Config;
 class Buckaroo
 {
 	/**
-	 * Returns wether the the
+	 * Returns wether the
 	 *
 	 * @var bool
 	 */
-	public static $success = false;
+	private static $_success = array();
+
+	static function getSuccess() {
+		$class = get_called_class();
+		if(isset(self::$_success[$class])) {
+			$success  = self::$_success[$class];
+        }
+		else {
+			$success = false;
+		}
+
+		return $success;
+	}
+
+	static function setSuccess($value) {
+		$class = get_called_class();
+		self::$_success[$class] = $value;
+	}
 
 	/**
 	 * Holds the given errors
 	 *
 	 * @var array
 	 */
-	public static $errors = array();
+	private static $_errors = array();
+
+	static function getErrors() {
+		$class = get_called_class();
+		if(isset(self::$_errors[$class])) {
+			$errors = self::$_errors[$class];
+        }
+		else {
+			$errors = false;
+		}
+
+		return $errors;
+	}
+
+	static function setError($value) {
+		$class = get_called_class();
+		self::$_errors[$class] = $value;
+	}
 
 	/**
 	 * Retrieving transaction data with a given Invoice number.
@@ -121,7 +155,7 @@ class Buckaroo
 					$TransactionRequest->Services->Service->RequestParameter = new SOAP\RequestParameter('issuer', $transactionInfo->ID);
 				}
 
-				self::$success = true;
+				self::setSuccess(true);
 
 				return $this->TransactionRequest->sendRequest($TransactionRequest, 'transaction');
 
@@ -170,7 +204,7 @@ class Buckaroo
 				}
 			}
 
-			self::$success = true;
+			self::setSuccess(true);
 
 			return (!$transactionInfo) ? false : true;
 		}
@@ -201,7 +235,7 @@ class Buckaroo
 			$dataArray['bpe_url']       = ((Config::get('buckaroo::test_mode')) ? Config::get('buckaroo::bpe_post_test_url') : Config::get('buckaroo::bpe_post_url'));
 			$dataArray['button']        = $button;
 
-			self::$success = true;
+			self::setSuccess(true);
 
 			return \View::make('buckaroo::SubmitForm', $dataArray);
 		}
@@ -247,7 +281,7 @@ class Buckaroo
 	 */
 	public function success()
 	{
-		return self::$success;
+		return self::getSuccess();
 	}
 
 	/**
@@ -257,6 +291,8 @@ class Buckaroo
 	{
 		return self::$errors;
 	}
+
+
 
 
 }
