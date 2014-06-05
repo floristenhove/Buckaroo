@@ -7,7 +7,7 @@ use Config;
 /**
  * Class Buckaroo
  *
- * @package johnhout\Buckaroo
+ * @package johnhout\Buckaroo (floristenhove\Buckaroo fork)
  *
  * Buckaroo BPE3 API client for Laravel 4
  * Made by: John in 't Hout - U-Lab.nl
